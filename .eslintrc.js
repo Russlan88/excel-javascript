@@ -9,7 +9,7 @@ module.exports = {
         "arrow-parents": "off"
     },
     "parserOptions": {
-        "ecmaVersion": 11
+        "sourceType": "module"
     },
     "rules": {
     }
