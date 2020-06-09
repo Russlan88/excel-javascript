@@ -19,7 +19,6 @@ class Dom {
     }
 
     on(eventType, callback) {
-        // this.$$listeners[eventType] = callback
         this.$el.addEventListener(eventType, callback)
     }
 
@@ -31,18 +30,42 @@ class Dom {
         if (node instanceof Dom) {
             node = node.$el
         }
+
         if (Element.prototype.append) {
             this.$el.append(node)
         } else {
             this.$el.appendChild(node)
         }
-        return this
 
+        return this
+    }
+
+    get data() {
+        return this.$el.dataset
+    }
+
+    closest(selector) {
+        return $(this.$el.closest(selector))
+    }
+
+    getCoords() {
+        return this.$el.getBoundingClientRect()
+    }
+
+    findAll(selector) {
+        return this.$el.querySelectorAll(selector)
+    }
+
+    css(styles = {}) {
+        Object
+            .keys(styles)
+            .forEach(key => {
+                this.$el.style[key] = styles[key]
+            })
     }
 }
 
-// $('div').html('<h1>Test</h1>').clear()
-
+// event.target
 export function $(selector) {
     return new Dom(selector)
 }
@@ -52,6 +75,5 @@ $.create = (tagName, classes = '') => {
     if (classes) {
         el.classList.add(classes)
     }
-
     return $(el)
 }
