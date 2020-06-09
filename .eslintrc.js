@@ -9,8 +9,10 @@ module.exports = {
         "arrow-parents": "off"
     },
     "parserOptions": {
-        "sourceType": "module"
+        "sourceType": "module",
     },
+    "parser": "babel-eslint",
     "rules": {
+        "operator-linebreak": "off"
     }
 };
